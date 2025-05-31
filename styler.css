@@ -1,5 +1,6 @@
 body {
   background-color:#1E1E2F;  
+  font-family: 'Roboto', 'Montserrat', Arial, sans-serif;
 }
 
 h1 {
@@ -51,6 +52,8 @@ th, td {
   border: 1px solid #444;
   text-align: left;
   background-color: #2a2a3b;
+  word-break: break-word;      /* Add this */
+  white-space: normal;         /* Add this */
 }
 
 input[type="text"] {
@@ -61,3 +64,157 @@ input[type="text"] {
   font-size: 16px;
 }
 
+table th {
+  background-color: #3a3a4b;
+  color: #fff;
+  margin: auto;
+}
+
+.table-container {
+    max-height: 300px;
+    overflow-y: auto;
+    margin: 0 auto;
+    width: 50%;
+    border-radius: 12px;
+}
+.table-container::-webkit-scrollbar {
+    display: none; 
+}
+
+.topnav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.topnav img {
+    height: 100px;
+    margin-right: 20px;
+    margin-left: 20px;
+    align-self: flex-start;
+}
+
+.welcome-text {
+    flex: 1;
+    font-size: 1.5em;
+    text-align: center;
+    font-family: 'Bebas Neue';
+    margin-top: 0;
+    padding: 20px 0;
+    border-radius: 16px;
+    /* Animated gradient for text */
+    background: linear-gradient(270deg, #7f5fff, #5f5fff, #232346, #7f5fff);
+    background-size: 600% 600%;
+    animation: gradientShift 8s ease infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.add-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #232346;
+    padding: 24px 16px;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    max-width: 400px;
+    margin: 30px auto;
+    gap: 12px;
+}
+
+.add-card input[type="text"] {
+    width: 90%;
+    padding: 12px;
+    margin: 0;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #181828;
+    color: #fff;
+    font-size: 1.1em;
+    transition: border 0.2s;
+}
+
+.add-card input[type="text"]:focus {
+    border: 1.5px solid #7f5fff;
+    outline: none;
+}
+
+.add-card .button {
+    width: 95%;
+    padding: 12px;
+    font-size: 1.1em;
+    font-family: 'Bebas Neue', Arial, sans-serif;
+    background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.add-card .button:hover {
+    background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
+    color: #fff;
+}
+
+.add-card-input {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+}
+
+.add-card-inputs input[type="text"] {
+    width: 100%;
+    min-width: 0;
+}
+
+.delete-btn {
+    background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 16px;
+    cursor: pointer;
+    font-family: 'Bebas Neue', Arial, sans-serif;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px rgba(127,95,255,0.15);
+    transition: background 0.2s, color 0.2s, transform 0.1s;
+    margin: 0 4px;
+}
+.delete-btn:hover {
+    background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
+    color: #fff;
+    transform: scale(1.08);
+}
+
+#flashcardTable th:last-child,
+#flashcardTable td:last-child {
+    width: 60px;   /* Adjust as needed for your button size */
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#flashcardTable th:first-child,
+#flashcardTable td:first-child {
+    width: 36px;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+}

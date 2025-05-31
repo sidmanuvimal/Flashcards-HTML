@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
-<link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
-<html>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"><html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title> FlashCards </title>
         <meta name="description" content="">
+        <link rel="icon" type="image/png" href="logo2.png">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styler.css">
     </head>
     <body>
-        <div class="container">
-            <h1>FlashCards</h1>
-            <p>Welcome to the FlashCards app!</p>
-            <p>Here you can create, study, and manage your flashcards.</p>
+        <div class="topnav">
+            <img src="logo.png" alt="FlashCards Logo">
+            <div class="welcome-text" style="font-size: 45px; margin-top: 10px;">
+                Welcome to FlashCards. Here you can create, manage, and practice your flashcards.
+            </div>
         </div>
-        <div class ="Table">
+        <div class ="table-container">
           <table id="flashcardTable" border="1">
               <thead>
                 <tr>
+                  <th>No.</th>
                   <th>Question</th>
                   <th>Answer</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
               </tbody>
             </table>
-            
             <br>
-            
-            <input type="text" id="questionInput" placeholder="Enter question">
-            <input type="text" id="answerInput" placeholder="Enter answer">
-            <button onclick="addCard()">Add Flashcard</button>
+        </div>
+
+        <div class="add-card">
+          <div class="add-card-input">
+              <input type="text" id="questionInput" placeholder="Enter question">
+              <input type="text" id="answerInput" placeholder="Enter answer">
           </div>
+          <button class="button" onclick="addCard()">Add Flashcard</button>
+        </div>
 
         <script src="flashcard.js" async defer></script>
-    </body>
+
+      </body>
 </html>
