@@ -71,7 +71,7 @@ table th {
 }
 
 .table-container {
-    max-height: 300px;
+    max-height: 200px;
     overflow-y: auto;
     margin: 0 auto;
     width: 50%;
@@ -162,12 +162,13 @@ table th {
     border-radius: 8px;
     cursor: pointer;
     letter-spacing: 1px;
-    transition: background 0.2s, color 0.2s;
+    transition: background 0.2s, color 0.2s, transform 0.3s ;
 }
 
 .add-card .button:hover {
     background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
     color: #fff;
+    transform: scale(1.15);
 }
 
 .add-card-input {
@@ -194,13 +195,13 @@ table th {
     font-size: 1.1em;
     letter-spacing: 1px;
     box-shadow: 0 2px 8px rgba(127,95,255,0.15);
-    transition: background 0.2s, color 0.2s, transform 0.1s;
+    transition: background 0.2s, color 0.2s;
     margin: 0 4px;
 }
 .delete-btn:hover {
     background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
     color: #fff;
-    transform: scale(1.08);
+    transform: scale(1.55);
 }
 
 #flashcardTable th:last-child,
@@ -217,4 +218,102 @@ table th {
     text-align: center;
     padding-left: 0;
     padding-right: 0;
+}
+
+
+.start-btn {
+    display: block;
+    margin: 30px auto;
+    padding: 14px 36px;
+    font-size: 1.3em;
+    font-family: 'Bebas Neue', Arial, sans-serif;
+    background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(127,95,255,0.15);
+    transition: background 0.2s, transform 0.2s;
+}
+.start-btn:hover {
+    background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
+    transform: scale(1.08);
+}
+
+.about-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5em;
+    font-family: 'Bebas Neue', Arial, sans-serif;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, background 0.2s;
+}
+.about-btn:hover {
+    background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
+    transform: scale(1.1);
+}
+
+/* Main Container */
+.container {
+    max-width: 750px;
+    min-height: 35vh;
+    margin: 36px auto;
+    padding: 30px 22px;
+    font-family: 'Bebas Neue', sans-serif;
+    color: #fff;
+    background-color: #232346;
+    border-radius: 20px;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Container Headings and Paragraphs */
+.container h1 {
+    text-align: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.35em;
+    margin-bottom: 22px;
+}
+
+.container p,
+.container ul {
+    font-size: 1.3em;
+    font-family: 'Bebas Neue', sans-serif;
+    line-height: 1.5;
+    margin-bottom: 13px;
+}
+
+.container ul {
+    text-align: center;
+    padding-left: 22px;
+}
+
+/* Return (Done) Button */
+.return {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 24px;
+    font-size: 1.2em;
+    font-family: 'Bebas Neue', sans-serif;
+    background: linear-gradient(90deg, #7f5fff, #5f5fff);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(127,95,255,0.15);
+    transition: transform 0.2s, background 0.2s;
+}
+
+.return:hover {
+    background: linear-gradient(90deg, #5f5fff, #7f5fff);
+    transform: scale(1.05);
 }
