@@ -19,10 +19,26 @@
             </div>
         </div>
 
-        <button class="start-btn" onclick="window.location.href='Main_page.html'">Start</button>
+
+        <div class="QA">
+          <div class="flashcard-container">
+            <div class="flashcard">
+                <div class="front">
+                    <h2 id="card-question"></h2>
+                </div>
+                <div class="back">
+                    <h3 id="card-answer"></h3>
+                </div>
+            </div>
+        </div>
+        <div class="next">
+            <button id="done-button" class="done-btn">Next</button>
+        </div>
+      </div>  
+
 
         <button class="about-btn" onclick="window.location.href='about.html'">?</button>
         
-        <script src="flashcard.js" async defer></script>
+        <script src="flashcard.js"></script>
     </body>
 </html>
