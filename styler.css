@@ -1,8 +1,14 @@
+/* === GLOBAL STYLES === */
 body {
-  background-color:#1E1E2F;  
+  background-color: #1E1E2F;
   font-family: 'Roboto', 'Montserrat', Arial, sans-serif;
 }
 
+body.qa::-webkit-scrollbar {
+  display: none;
+}
+
+/* === TYPOGRAPHY === */
 h1 {
   color: #E0E0E0;
   text-align: center;
@@ -23,20 +29,56 @@ p {
   text-align:center;
 }
 
-.button { 
-  background-color: 	#ffffff;
-  color: #1E1E2F;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-family: 'Roboto';
-  transition: background 0.2s, color 0.2s;
-  margin: 20px auto;
+/* === NAVIGATION === */
+.topnav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 100%;
 }
-.button:hover {
-  background-color: #000000;
-  color: #ffffff;
+
+.topnav img {
+  height: 100px;
+  margin-right: 20px;
+  margin-left: 20px;
+  align-self: flex-start;
+}
+
+.welcome-text {
+  flex: 1;
+  font-size: 1.5em;
+  text-align: center;
+  font-family: 'Bebas Neue';
+  margin-top: 0;
+  padding: 20px 0;
+  border-radius: 16px;
+  background: linear-gradient(270deg, #7f5fff, #5f5fff, #232346, #7f5fff);
+  background-size: 600% 600%;
+  animation: gradientShift 8s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === TABLE === */
+.table-container {
+  max-height: 200px;
+  overflow-y: auto;
+  margin: 0 auto;
+  width: 50%;
+  border-radius: 12px;
+}
+.table-container::-webkit-scrollbar {
+  display: none;
 }
 
 table {
@@ -52,16 +94,8 @@ th, td {
   border: 1px solid #444;
   text-align: left;
   background-color: #2a2a3b;
-  word-break: break-word;      /* Add this */
-  white-space: normal;         /* Add this */
-}
-
-input[type="text"] {
-  padding: 10px;
-  margin: 5px;
-  border-radius: 5px;
-  border: none;
-  font-size: 16px;
+  word-break: break-word;
+  white-space: normal;
 }
 
 table th {
@@ -70,351 +104,332 @@ table th {
   margin: auto;
 }
 
-.table-container {
-    max-height: 200px;
-    overflow-y: auto;
-    margin: 0 auto;
-    width: 50%;
-    border-radius: 12px;
-}
-.table-container::-webkit-scrollbar {
-    display: none; 
-}
-
-.topnav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-.topnav img {
-    height: 100px;
-    margin-right: 20px;
-    margin-left: 20px;
-    align-self: flex-start;
-}
-
-.welcome-text {
-    flex: 1;
-    font-size: 1.5em;
-    text-align: center;
-    font-family: 'Bebas Neue';
-    margin-top: 0;
-    padding: 20px 0;
-    border-radius: 16px;
-    /* Animated gradient for text */
-    background: linear-gradient(270deg, #7f5fff, #5f5fff, #232346, #7f5fff);
-    background-size: 600% 600%;
-    animation: gradientShift 8s ease infinite;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-}
-
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.add-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #232346;
-    padding: 24px 16px;
-    border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
-    max-width: 400px;
-    margin: 30px auto;
-    gap: 12px;
-}
-
-.add-card input[type="text"] {
-    width: 90%;
-    padding: 12px;
-    margin: 0;
-    border-radius: 8px;
-    border: 1px solid #444;
-    background: #181828;
-    color: #fff;
-    font-size: 1.1em;
-    transition: border 0.2s;
-}
-
-.add-card input[type="text"]:focus {
-    border: 1.5px solid #7f5fff;
-    outline: none;
-}
-
-.add-card .button {
-    width: 95%;
-    padding: 12px;
-    font-size: 1.1em;
-    font-family: 'Bebas Neue', Arial, sans-serif;
-    background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    letter-spacing: 1px;
-    transition: background 0.2s, color 0.2s, transform 0.3s ;
-}
-
-.add-card .button:hover {
-    background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
-    color: #fff;
-    transform: scale(1.05);
-}
-
-.add-card-input {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    width: 100%;
-    justify-content: center;
-}
-
-.add-card-inputs input[type="text"] {
-    width: 100%;
-    min-width: 0;
-}
-
-.delete-btn {
-    background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 6px 16px;
-    cursor: pointer;
-    font-family: 'Bebas Neue', Arial, sans-serif;
-    font-size: 1.1em;
-    letter-spacing: 1px;
-    box-shadow: 0 2px 8px rgba(127,95,255,0.15);
-    transition: background 0.2s, color 0.2s;
-    margin: 0 4px;
-}
-.delete-btn:hover {
-    background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
-    color: #fff;
-    transform: scale(1.55);
-}
-
 #flashcardTable th:last-child,
 #flashcardTable td:last-child {
-    width: 60px;   /* Adjust as needed for your button size */
-    text-align: center;
-    padding-left: 0;
-    padding-right: 0;
+  width: 60px;
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 #flashcardTable th:first-child,
 #flashcardTable td:first-child {
-    width: 36px;
-    text-align: center;
-    padding-left: 0;
-    padding-right: 0;
+  width: 36px;
+  text-align: center;
+  padding-left: 0;
+  padding-right: 0;
 }
 
+/* === INPUTS === */
+input[type="text"] {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+/* === ADD CARD === */
+.add-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #232346;
+  padding: 24px 16px;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  max-width: 400px;
+  margin: 30px auto;
+  gap: 12px;
+}
+
+.add-card input[type="text"] {
+  width: 90%;
+  padding: 12px;
+  margin: 0;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #181828;
+  color: #fff;
+  font-size: 1.1em;
+  transition: border 0.2s;
+}
+
+.add-card input[type="text"]:focus {
+  border: 1.5px solid #7f5fff;
+  outline: none;
+}
+
+.add-card .button {
+  width: 95%;
+  padding: 12px;
+  font-size: 1.1em;
+  font-family: 'Bebas Neue', Arial, sans-serif;
+  background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s, transform 0.3s ;
+}
+
+.add-card .button:hover {
+  background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.add-card-input {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.add-card-inputs input[type="text"] {
+  width: 100%;
+  min-width: 0;
+}
+
+.delete-btn {
+  background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 16px;
+  cursor: pointer;
+  font-family: 'Bebas Neue', Arial, sans-serif;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(127,95,255,0.15);
+  transition: background 0.2s, color 0.2s;
+  margin: 0 4px;
+}
+.delete-btn:hover {
+  background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
+  color: #fff;
+  transform: scale(1.55);
+}
+
+/* === FLASHCARD === */
+.flashcard-container {
+  width: 45vw;
+  height: 25vw;
+  aspect-ratio: 5 / 3;
+  perspective: 1000px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flashcard {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.5s, transform 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1em, 3vw, 2em);
+  border-radius: 8%;
+  padding: 4%;
+  word-break: break-word;
+  white-space: normal;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.front {
+  background: #c28a7c;
+  color: #090844;
+  transition: opacity 0.2s;
+  opacity: 1;
+}
+
+.front.fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.back {
+  background: #090844;
+  color: #fff3e6;
+  transform: rotateY(180deg);
+}
+
+.flashcard.fade {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* === QA PAGE === */
+.QA {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.next {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.done-btn {
+  background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
+  color: #ffffff;
+  border: none;
+  padding: 14px 36px;
+  font-size: 1.2em;
+  font-family: 'Bebas Neue', Arial, sans-serif;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(127, 95, 255, 0.2);
+  transition: background 0.2s ease, transform 0.2s;
+  display: block;
+  margin: 20px auto;
+}
+
+.done-btn:hover {
+  background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
+  transform: scale(1.05);
+}
+
+/* === BUTTONS === */
+.button { 
+  background-color: 	#ffffff;
+  color: #1E1E2F;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Roboto';
+  transition: background 0.2s, color 0.2s;
+  margin: 20px auto;
+}
+
+.button:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
 
 .start-btn {
-    display: block;
-    margin: 30px auto;
-    padding: 14px 36px;
-    font-size: 1.3em;
-    font-family: 'Bebas Neue', Arial, sans-serif;
-    background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(127,95,255,0.15);
-    transition: background 0.2s, transform 0.2s;
+  display: block;
+  margin: 30px auto;
+  padding: 14px 36px;
+  font-size: 1.3em;
+  font-family: 'Bebas Neue', Arial, sans-serif;
+  background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(127,95,255,0.15);
+  transition: background 0.2s, transform 0.2s;
 }
+
 .start-btn:hover {
-    background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
-    transform: scale(1.08);
+  background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
+  transform: scale(1.08);
 }
 
 .about-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    font-size: 1.5em;
-    font-family: 'Bebas Neue', Arial, sans-serif;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s, background 0.2s;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5em;
+  font-family: 'Bebas Neue', Arial, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s, background 0.2s;
 }
+
 .about-btn:hover {
-    background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
-    transform: scale(1.1);
+  background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
+  transform: scale(1.1);
 }
 
+.return {
+  display: block;
+  margin: 30px auto;
+  padding: 12px 24px;
+  font-size: 1.2em;
+  font-family: 'Bebas Neue', sans-serif;
+  background: linear-gradient(90deg, #7f5fff, #5f5fff);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(127,95,255,0.15);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.return:hover {
+  background: linear-gradient(90deg, #5f5fff, #7f5fff);
+  transform: scale(1.05);
+}
+
+/* === CONTAINER === */
 .container {
-    max-width: 750px;
-    min-height: 35vh;
-    margin: 36px auto;
-    padding: 30px 22px;
-    font-family: 'Bebas Neue', sans-serif;
-    color: #fff;
-    background-color: #232346;
-    border-radius: 20px;
-    box-shadow: 0 4px 32px rgba(255, 0, 0, 1.25);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  max-width: 750px;
+  min-height: 35vh;
+  margin: 36px auto;
+  padding: 30px 22px;
+  font-family: 'Bebas Neue', sans-serif;
+  color: #fff;
+  background-color: #232346;
+  border-radius: 20px;
+  box-shadow: 0 4px 32px rgba(255, 0, 0, 1.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-
 
 .container h1 {
-    text-align: center;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.35em;
-    margin-bottom: 22px;
+  text-align: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.35em;
+  margin-bottom: 22px;
 }
 
 .container p,
 .container ul {
-    font-size: 1.3em;
-    font-family: 'Bebas Neue', sans-serif;
-    line-height: 1.5;
-    margin-bottom: 13px;
+  font-size: 1.3em;
+  font-family: 'Bebas Neue', sans-serif;
+  line-height: 1.5;
+  margin-bottom: 13px;
 }
 
 .container ul {
-    text-align: center;
-    padding-left: 22px;
-}
-
-
-.return {
-    display: block;
-    margin: 30px auto;
-    padding: 12px 24px;
-    font-size: 1.2em;
-    font-family: 'Bebas Neue', sans-serif;
-    background: linear-gradient(90deg, #7f5fff, #5f5fff);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(127,95,255,0.15);
-    transition: transform 0.2s, background 0.2s;
-}
-
-.return:hover {
-    background: linear-gradient(90deg, #5f5fff, #7f5fff);
-    transform: scale(1.05);
-}
-
-.flashcard-container {
-    width: 900px;
-    height: 480px;
-    perspective: 1000px;
-    margin-bottom: 20px;
-}
-
-.flashcard {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    cursor: pointer;
-    opacity: 1; /* Ensure text is visible by default */
-    transition: opacity 0.5s, transform 0.5s;
-}
-
-.flashcard.flipped {
-    transform: rotateY(180deg);
-}
-
-.front, .back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5em;
-    border-radius: 12px;
-    padding: 20px;
-    word-break: break-word; /* Ensure text wraps */
-    white-space: normal;    /* Ensure text wraps */
-    text-align: center ; /* Center text */
-    overflow-wrap: break-word; /* Ensure long words wrap */
-}
-
-.front {
-    background: #c28a7c;
-    color: #090844;
-    transition: opacity 0.2s;
-    opacity: 1;
-}
-
-.front.fade {
-    opacity: 0;
-    pointer-events: none;
-}
-
-.back {
-    background: #090844;  /* Medium peach-orange */
-    color: #fff3e6;       /* Soft creamy peach text */
-    transform: rotateY(180deg);/* Flip the back side */
-
-}
-
-.flashcard.fade {
-    opacity:0;
-    pointer-events: none; /* Prevent interaction when faded */
-}
-.next {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-  
-.done-btn {
-    background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
-    color: #ffffff;
-    border: none;
-    padding: 14px 36px;
-    font-size: 1.2em;
-    font-family: 'Bebas Neue', Arial, sans-serif;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(127, 95, 255, 0.2);
-    transition: background 0.2s ease, transform 0.2s;
-    display: block;
-    margin: 20px auto;
-}
-
-.done-btn:hover {
-    background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
-    transform: scale(1.05);
-}
-
-.QA {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 40px;
-}
-
-.flashcard-container {
-    width: 900px;
-    height: 480px;
-    perspective: 1000px;
-    margin-bottom: 20px;
+  text-align: center;
+  padding-left: 22px;
 }

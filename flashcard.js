@@ -89,6 +89,12 @@ if (isQAPage) {
   const nextBtn = document.getElementById('done-button');
   const frontElem = flashcard.querySelector('.front'); // Get the front element
 
+  // Load flashcards from storage
+  let flashcards = JSON.parse(localStorage.getItem("flashcards")) || [];
+
+  // Shuffle the flashcards for random order BEFORE showing any card
+  shuffleArray(flashcards);
+
   let currentIndex = 0;
 
   function showFlashcard(index) {
@@ -128,6 +134,14 @@ if (isQAPage) {
     }, 200); // 0.2 seconds
   });
 
-  // Initialize first card
+  // Initialize first card AFTER shuffling
   showFlashcard(currentIndex);
+}
+
+// Shuffle function
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
 }
