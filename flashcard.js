@@ -36,7 +36,7 @@ if (isMainPage) {
     const question = questionInput.value.trim();
     const answer = answerInput.value.trim();
 
-    if(question.lenght>600 || answer.length>600){
+    if(question.length>600 || answer.length>600){
       alert("Question and answer must be less than 600 characters each.");
       return;
     }
@@ -87,7 +87,17 @@ if (isQAPage) {
   const questionElem = document.getElementById('card-question');
   const answerElem = document.getElementById('card-answer');
   const nextBtn = document.getElementById('done-button');
+  const correctBtn = document.getElementById('correct-button'); // Correct button
+  const wrongBtn = document.getElementById('wrong-button');
   const frontElem = flashcard.querySelector('.front'); // Get the front element
+
+  // Disable buttons initially
+  correctBtn.disabled = true;
+  wrongBtn.disabled = true;
+
+  // Hide buttons initially
+  correctBtn.classList.add('hidden');
+  wrongBtn.classList.add('hidden');
 
   // Load flashcards from storage
   let flashcards = JSON.parse(localStorage.getItem("flashcards")) || [];
@@ -96,23 +106,42 @@ if (isQAPage) {
   shuffleArray(flashcards);
 
   let currentIndex = 0;
+  let correctCount = 0; // Track correct answers
+  let wrongCount = 0; // Track wrong answers
 
   function showFlashcard(index) {
     if (flashcards.length === 0) {
       questionElem.textContent = "No flashcards found!";
       answerElem.textContent = "";
       flashcard.classList.remove('flipped');
+      correctBtn.classList.add('hidden'); // Hide buttons
+      wrongBtn.classList.add('hidden'); // Hide buttons
       return;
     }
     questionElem.textContent = flashcards[index].question;
     answerElem.textContent = flashcards[index].answer;
     flashcard.classList.remove('flipped'); // Always show front first
+    correctBtn.classList.add('hidden'); // Hide buttons until flipped
+    wrongBtn.classList.add('hidden');// Disable buttons until flipped
   }
 
   // Flip card on click
   flashcard.addEventListener('click', () => {
     if (flashcards.length > 0) {
       flashcard.classList.toggle('flipped');
+
+      // Show and enable buttons when card is flipped
+      if (flashcard.classList.contains('flipped')) {
+        correctBtn.classList.remove('hidden'); // Show buttons
+        wrongBtn.classList.remove('hidden'); // Show buttons
+        correctBtn.disabled = false; // Enable buttons
+        wrongBtn.disabled = false; // Enable buttons
+      } else {
+        correctBtn.classList.add('hidden'); // Hide buttons
+        wrongBtn.classList.add('hidden'); // Hide buttons
+        correctBtn.disabled = true; // Disable buttons
+        wrongBtn.disabled = true; // Disable buttons
+      }
     }
   });
 
@@ -133,6 +162,43 @@ if (isQAPage) {
         frontElem.classList.remove('fade');
     }, 200); // 0.2 seconds
   });
+
+  // Correct button logic
+  correctBtn.addEventListener('click', () => {
+    if (flashcards.length === 0) return;
+  
+    correctCount++; // Increment correct answers
+    console.log(`Correct answers: ${correctCount}`);
+    
+    // Move to the next flashcard
+    currentIndex = (currentIndex + 1) % flashcards.length;
+    showFlashcard(currentIndex);
+
+    // Disable buttons after moving to the next card
+    correctBtn.disabled = true;
+    wrongBtn.disabled = true;
+    correctBtn.classList.add('hidden');
+    wrongBtn.classList.add('hidden');
+  });
+  
+  // Wrong button logic
+  wrongBtn.addEventListener('click', () => {
+    if (flashcards.length === 0) return;
+  
+    wrongCount++; // Increment wrong answers
+    console.log(`Wrong answers: ${wrongCount}`);
+    
+    // Move to the next flashcard
+    currentIndex = (currentIndex + 1) % flashcards.length;
+    showFlashcard(currentIndex);
+
+    // Disable buttons after moving to the next card
+    correctBtn.disabled = true;
+    wrongBtn.disabled = true;
+    correctBtn.classList.add('hidden');
+    wrongBtn.classList.add('hidden');
+  });
+  
 
   // Initialize first card AFTER shuffling
   showFlashcard(currentIndex);
