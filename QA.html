@@ -32,8 +32,14 @@
             </div>
         </div>
         <div class="qa-buttons">
-            <button id="correct-button" class="qa-btn correct-btn">Correct</button>
-            <button id="wrong-button" class="qa-btn wrong-btn">Wrong</button>
+            <button id="correct-button" class="qa-btn correct-btn">✔</button>
+            <div class = "progress-bar-container">
+                <span class="progress-bar-correct-label">0</span>
+                <div class ="progress-bar-correct"></div>
+                <div class ="progress-bar-wrong"></div>
+                <span class="progress-bar-wrong-label">0</span>
+            </div>
+            <button id="wrong-button" class="qa-btn wrong-btn">X</button>
         </div>
         <div class="next">
             <button id="done-button" class="done-btn">Next</button>

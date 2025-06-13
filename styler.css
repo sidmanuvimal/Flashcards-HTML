@@ -215,8 +215,8 @@ input[type="text"] {
 
 /* === FLASHCARD === */
 .flashcard-container {
-  width: 45vw;
-  height: 25vw;
+  width: 35vw;
+  height: 20vw;
   aspect-ratio: 5 / 3;
   perspective: 1000px;
   margin-bottom: 20px;
@@ -418,23 +418,28 @@ input[type="text"] {
 .correct-btn {
   background-color: #4caf50; /* Green */
   color: white;
-}
-
-.correct-btn:hover {
-  background-color: #45a049;
+  border-radius: 50%;
+  width: 3vw;
+  height: 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .wrong-btn {
   background-color: #f44336; /* Red */
   color: white;
-}
-
-.wrong-btn:hover {
-  background-color: #e53935;
+  border-radius: 50%;
+  width: 3vw;
+  height: 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hidden {
-  display: none;
+  pointer-events: none;
+  background-color: #626262;
 }
 
 /* === CONTAINER === */
@@ -471,4 +476,52 @@ input[type="text"] {
 .container ul {
   text-align: center;
   padding-left: 22px;
+}
+
+/* === PROGRESS BAR === */
+
+.progress-bar-container {
+    position: relative;
+    width: 30vw;
+    height: 18px;
+    background: #232346;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 16px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    justify-content: space-between;
+    margin-top: 1vw;
+}
+
+.progress-bar-correct,
+.progress-bar-wrong {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: width 0.3s;
+    z-index: 1;
+}
+
+.progress-bar-correct {
+    left: 0;
+    background: #4caf50;
+}
+
+.progress-bar-wrong {
+    right: 0;
+    background: #f44336;
+    opacity: 0.5;
+}
+
+.progress-bar-correct-label,
+.progress-bar-wrong-label {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    font-size: 0.95em;
+    padding: 0 6px;
+    font-family: 'Bebas Neue', Arial, sans-serif;
+    user-select: none;
 }

@@ -161,18 +161,47 @@ if (isQAPage) {
         // Fade in front
         frontElem.classList.remove('fade');
     }, 200); // 0.2 seconds
-  });
+});
+
+  // Helper function for next card animation
+  function animateToNextCard() {
+    flashcard.classList.remove('flipped');
+    frontElem.classList.add('fade');
+
+    setTimeout(() => {
+        currentIndex = (currentIndex + 1) % flashcards.length;
+        showFlashcard(currentIndex);
+        frontElem.classList.remove('fade');
+    }, 200);
+  }
+
+
+  function updateProgressBar() {
+    const correctBar = document.querySelector('.progress-bar-correct');
+    const wrongBar = document.querySelector('.progress-bar-wrong');
+    const correctLabel = document.querySelector('.progress-bar-correct-label');
+    const wrongLabel = document.querySelector('.progress-bar-wrong-label');
+    const total = correctCount + wrongCount;
+    const correctPercent = total > 0 ? (correctCount / total) * 100 : 0;
+    const wrongPercent = total > 0 ? (wrongCount / total) * 100 : 0;
+
+    correctBar.style.width = correctPercent + "%";
+    wrongBar.style.width = wrongPercent + "%";
+    correctLabel.textContent = correctCount;
+    wrongLabel.textContent = wrongCount;
+  }
 
   // Correct button logic
   correctBtn.addEventListener('click', () => {
+    correctCount++;
+    updateProgressBar();
+
     if (flashcards.length === 0) return;
-  
-    correctCount++; // Increment correct answers
+
     console.log(`Correct answers: ${correctCount}`);
-    
-    // Move to the next flashcard
-    currentIndex = (currentIndex + 1) % flashcards.length;
-    showFlashcard(currentIndex);
+
+    // Animate to next card
+    animateToNextCard();
 
     // Disable buttons after moving to the next card
     correctBtn.disabled = true;
@@ -183,14 +212,15 @@ if (isQAPage) {
   
   // Wrong button logic
   wrongBtn.addEventListener('click', () => {
+    wrongCount++;
+    updateProgressBar();
+
     if (flashcards.length === 0) return;
   
-    wrongCount++; // Increment wrong answers
     console.log(`Wrong answers: ${wrongCount}`);
     
-    // Move to the next flashcard
-    currentIndex = (currentIndex + 1) % flashcards.length;
-    showFlashcard(currentIndex);
+    // Animate to next card
+    animateToNextCard();
 
     // Disable buttons after moving to the next card
     correctBtn.disabled = true;
