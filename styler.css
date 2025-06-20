@@ -1,8 +1,11 @@
 /* === GLOBAL STYLES === */
 body {
   background-color: #1E1E2F;
+  user-select: none;
   font-family: 'Roboto', 'Montserrat', Arial, sans-serif;
+
 }
+
 
 body.qa::-webkit-scrollbar {
   display: none;
@@ -61,6 +64,7 @@ p {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+  transition: transform 0.1s ease-out;
 }
 
 @keyframes gradientShift {
@@ -68,6 +72,7 @@ p {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
 
 /* === TABLE === */
 .table-container {
@@ -320,6 +325,39 @@ input[type="text"] {
   transform: scale(1.05);
 }
 
+.flip {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.flip-btn {
+  background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
+  color: #ffffff;
+  border: none;
+  padding: 14px 36px;
+  font-size: 1.2em;
+  font-family: 'Bebas Neue', Arial, sans-serif;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(127, 95, 255, 0.2);
+  transition: background 0.2s ease, transform 0.2s;
+  display: block;
+  margin: 20px auto;
+}
+
+.flip-btn:hover {
+  background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
+  transform: scale(1.05);
+}
+
+.QAbutton-container {
+  display: flex; /* Align buttons horizontally */
+  justify-content: center; /* Center the buttons horizontally */
+  gap: 10px; /* Add space between the buttons */
+  margin-top: 20px; /* Add some spacing above the container */
+}
+
 /* === BUTTONS === */
 .button { 
   background-color: 	#ffffff;
@@ -444,7 +482,7 @@ input[type="text"] {
 
 /* === CONTAINER === */
 .container {
-  max-width: 750px;
+  max-width: 1200px;
   min-height: 35vh;
   margin: 36px auto;
   padding: 30px 22px;
@@ -524,4 +562,56 @@ input[type="text"] {
     padding: 0 6px;
     font-family: 'Bebas Neue', Arial, sans-serif;
     user-select: none;
+}
+
+
+/*=== TRANSITION ===*/
+
+.slide{
+  position : fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1E1E2F;
+  left: -100vw; /* Start off-screen */
+  transition : left 0.9s ease-in-out;
+  z-index: 9999;
+  pointer-events: none; /* Prevent interaction when not active */
+}
+
+.slide.active{
+  left:0;
+  pointer-events: all;
+}
+
+/* === LOGO TOOLTIP === */
+.logo-container {
+  position: relative;
+  display: inline-block;
+}
+
+.logo-tooltip {
+  position: absolute;
+  left: 50%;
+  top: 110%;
+  background: #232346;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 01em;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  pointer-events: none;
+  transform: translateX(-30%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.logo-container:hover .logo-tooltip {
+  opacity: 1;
+}
+
+.logo-tooltip.show {
+  opacity: 1;
 }

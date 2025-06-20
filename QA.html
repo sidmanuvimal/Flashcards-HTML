@@ -13,7 +13,10 @@
     </head>
     <body class = "qa">
         <div class="topnav">
-            <img src="logo.png" alt="FlashCards Logo">
+            <a href="Main_page.html" class="logo-container">
+                <img class="logo" src="logo.png" alt="FlashCards Logo" style="cursor: pointer;">
+                <div class="logo-tooltip">Click me to go back to home page</div>
+              </a>              
             <div class="welcome-text" style="font-size: 45px; margin-top: 10px;">
                 Welcome to FlashCards. Here you can create, manage, and practice your flashcards.
             </div>
@@ -41,11 +44,17 @@
             </div>
             <button id="wrong-button" class="qa-btn wrong-btn">X</button>
         </div>
+        <div class="QAbutton-container">
+        <div class = "flip">
+            <button id="flip-button" class="flip-btn">Flip</button>
+        </div>
         <div class="next">
             <button id="done-button" class="done-btn">Next</button>
         </div>
+        </div>
       </div>  
 
+      <div class="slide"></div>
 
         <button class="about-btn" onclick="window.location.href='about.html'">?</button>
         
