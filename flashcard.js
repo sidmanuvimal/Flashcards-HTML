@@ -26,6 +26,18 @@ if (logo && slide) {
 }
 
 
+const slideTriggers = document.querySelectorAll('.slide-trigger');
+
+slideTriggers.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    slide.classList.add('active');
+    setTimeout(() => {
+      window.location.href = "QA.html"; // Redirect to QA page after fade-out
+    }, 900); // Match your CSS transition duration
+  });
+});
+
 
 // --- MAIN PAGE LOGIC ---
 if (isMainPage) {
