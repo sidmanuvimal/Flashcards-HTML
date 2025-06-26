@@ -1,22 +1,124 @@
 <!DOCTYPE html>
 <html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
-<link href="https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet"><html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title> FlashCards </title>
+        <link rel="icon" type="image/png" href="logo2.png">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="styler.css">
     </head>
     <body>
-        <div class="container">
-            <h1>FlashCards</h1>
-            <p>Welcome to the FlashCards app!</p>
-            <p>Here you can create, study, and manage your flashcards.</p>
-        </div>
-        <button class="button" onclick="window.location.href='About.html'">Done</button>
+        <div class="topnav">
+            <a href="Main_page.html" data-href = "Main_page.html" class="logo-container">
+                <img class="logo" src="Home Page.png" alt="FlashCards Logo" style="cursor: pointer;">
+                <div class="logo-tooltip">Click me to go back to home page</div>
+                </a>              
+            <div class="welcome-text" style="font-size: 45px; margin-top: 10px;">
+                    Choose a subject to Practice
+                </div>
+            </div>
+            <div class="flashcard-grid">
+                <!-- Maths -->
+                <div class="flashcard-box" data-subject="Maths">
+                    <h2>Maths</h2>
+                    <div class="flashcard-preview">
+                        <div class="flashcard-item">Q: What is 2+2? A: 4</div>
+                        <div class="flashcard-item">Q: What is 5x3? A: 15</div>
+                        <div class="flashcard-item">Q: Solve for x: 2x=10. A: x=5</div>
+                        <div class="flashcard-item">Q: What is the square root of 16? A: 4</div>
+                        <div class="flashcard-item">Q: What is 12 divided by 4? A: 3</div>
+                        <div class="flashcard-item">Q: What is the area of a rectangle with length 5 and width 3? A: 15</div>
+                        <div class="flashcard-item">Q: What is the perimeter of a square with side length 6? A: 24</div>
+                        <div class="flashcard-item">Q: What is 7x8? A: 56</div>
+                        <div class="flashcard-item">Q: What is 10% of 200? A: 20</div>
+                    </div>
+                </div>
+                <!-- English -->
+                <div class="flashcard-box" data-subject="English">
+                    <h2>English</h2>
+                    <div class="flashcard-preview">
+                        <div class="flashcard-item">Q: Synonym for 'happy'? A: Joyful</div>
+                        <div class="flashcard-item">Q: Antonym for 'big'? A: Small</div>
+                        <div class="flashcard-item">Q: Define 'metaphor'. A: A figure of speech comparing two things.</div>
+                        <div class="flashcard-item">Q: What is the plural of 'child'? A: Children</div>
+                        <div class="flashcard-item">Q: What is the past tense of 'run'? A: Ran</div>
+                        <div class="flashcard-item">Q: What is the opposite of 'beautiful'? A: Ugly</div>
+                        <div class="flashcard-item">Q: What is a noun? A: A word that represents a person, place, or thing.</div>
+                        <div class="flashcard-item">Q: What is an adjective? A: A word that describes a noun.</div>
+                        <div class="flashcard-item">Q: What is the synonym for 'fast'? A: Quick</div>
+                        <div class="flashcard-item">Q: What is the antonym for 'dark'? A: Bright</div>
+                    </div>
+                </div>
+                <!-- Geography -->
+                <div class="flashcard-box" data-subject="Geography">
+                    <h2>Geography</h2>
+                    <div class="flashcard-preview">
+                        <div class="flashcard-item">Q: Capital of France? A: Paris</div>
+                        <div class="flashcard-item">Q: Largest ocean? A: Pacific Ocean</div>
+                        <div class="flashcard-item">Q: What is a plateau? A: A flat elevated landform.</div>
+                        <div class="flashcard-item">Q: What is the longest river in the world? A: Nile River</div>
+                        <div class="flashcard-item">Q: Which continent is Australia in? A: Australia</div>
+                        <div class="flashcard-item">Q: What is the tallest mountain in the world? A: Mount Everest</div>
+                        <div class="flashcard-item">Q: What is the smallest country in the world? A: Vatican City</div>
+                        <div class="flashcard-item">Q: What is the largest desert in the world? A: Sahara Desert</div>
+                        <div class="flashcard-item">Q: What is the capital of Japan? A: Tokyo</div>
+                        <div class="flashcard-item">Q: What is the name of Earth's outermost layer? A: Crust</div>
+                    </div>
+                </div>
+                <!-- Social Studies -->
+                <div class="flashcard-box" data-subject="SocialStudies">
+                    <h2>Social Studies</h2>
+                    <div class="flashcard-preview">
+                        <div class="flashcard-item">Q: Who was Gandhi? A: Leader of Indian independence.</div>
+                        <div class="flashcard-item">Q: What is democracy? A: Rule by the people.</div>
+                        <div class="flashcard-item">Q: Define 'constitution'. A: A set of fundamental principles.</div>
+                        <div class="flashcard-item">Q: Who was Martin Luther King Jr.? A: A civil rights leader.</div>
+                        <div class="flashcard-item">Q: What is the United Nations? A: An international organization promoting peace.</div>
+                        <div class="flashcard-item">Q: What is the Cold War? A: A period of political tension between the USA and USSR.</div>
+                        <div class="flashcard-item">Q: What is feudalism? A: A medieval system of land ownership and hierarchy.</div>
+                        <div class="flashcard-item">Q: What is the Industrial Revolution? A: A period of rapid industrial growth in the 18th century.</div>
+                        <div class="flashcard-item">Q: What is the Magna Carta? A: A document limiting the power of the king.</div>
+                        <div class="flashcard-item">Q: What is globalization? A: The process of interconnected economies and cultures.</div>
+                    </div>
+                </div>
+                <!-- PE -->
+                <div class="flashcard-box" data-subject="PE">
+                    <h2>PE</h2>
+                    <div class="flashcard-preview">
+                        <div class="flashcard-item">Q: Benefits of exercise? A: Improves health and fitness.</div>
+                        <div class="flashcard-item">Q: Define 'cardio'. A: Exercise for heart health.</div>
+                        <div class="flashcard-item">Q: What is yoga? A: A practice for body and mind.</div>
+                        <div class="flashcard-item">Q: What is strength training? A: Exercise to build muscle strength.</div>
+                        <div class="flashcard-item">Q: What is flexibility? A: The ability to move joints through a full range of motion.</div>
+                        <div class="flashcard-item">Q: What is endurance? A: The ability to sustain physical activity over time.</div>
+                        <div class="flashcard-item">Q: What is the recommended daily exercise time? A: 30 minutes.</div>
+                        <div class="flashcard-item">Q: What is BMI? A: Body Mass Index.</div>
+                        <div class="flashcard-item">Q: What is hydration? A: Maintaining adequate water levels in the body.</div>
+                        <div class="flashcard-item">Q: What is aerobic exercise? A: Exercise that improves oxygen flow.</div>
+                    </div>
+                </div>
+                <!-- Science -->
+                <div class="flashcard-box" data-subject="Science">
+                    <h2>Science</h2>
+                    <div class="flashcard-preview">
+                        <div class="flashcard-item">Q: H2O is? A: Water</div>
+                        <div class="flashcard-item">Q: What is gravity? A: Force pulling objects down.</div>
+                        <div class="flashcard-item">Q: Define 'atom'. A: Basic unit of matter.</div>
+                        <div class="flashcard-item">Q: What is photosynthesis? A: Process by which plants make food using sunlight.</div>
+                        <div class="flashcard-item">Q: What is the speed of light? A: Approximately 300,000 km/s.</div>
+                        <div class="flashcard-item">Q: What is the boiling point of water? A: 100°C or 212°F.</div>
+                        <div class="flashcard-item">Q: What is the chemical symbol for gold? A: Au</div>
+                        <div class="flashcard-item">Q: What is the largest planet in the solar system? A: Jupiter</div>
+                        <div class="flashcard-item">Q: What is the powerhouse of the cell? A: Mitochondria</div>
+                        <div class="flashcard-item">Q: What is the formula for force? A: Force = Mass x Acceleration</div>
+                    </div>
+                </div>
+            </div>
+        <div class="slide"></div>
         <script src="flashcard.js" async defer></script>
     </body>
 </html>

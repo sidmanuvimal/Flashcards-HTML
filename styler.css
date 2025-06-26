@@ -51,10 +51,10 @@ p {
 
 .welcome-text {
   flex: 1;
-  font-size: 1.5em;
+  font-size: 2.5em;
   text-align: center;
   font-family: 'Bebas Neue';
-  margin-top: 0;
+  margin-right: 8vw;
   padding: 20px 0;
   border-radius: 16px;
   background: linear-gradient(270deg, #7f5fff, #5f5fff, #232346, #7f5fff);
@@ -76,22 +76,43 @@ p {
 
 /* === TABLE === */
 .table-container {
-  max-height: 200px;
+  max-height: 225px;
   overflow-y: auto;
   margin: 0 auto;
-  width: 50%;
-  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  scroll-snap-type:y mandatory;
 }
+
+
 .table-container::-webkit-scrollbar {
-  display: none;
+  width: 10px;
+  background: #232346; /* Matches your container background */
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
+  border-radius: 8px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
+}
+
+.table-container::-webkit-scrollbar-corner {
+  background: #232346;
 }
 
 table {
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  border-collapse: collapse;
   color: #fff;
+}
+
+table tr {
+  scroll-snap-align: start;
+  height: 48px;
 }
 
 th, td {
@@ -107,6 +128,12 @@ table th {
   background-color: #3a3a4b;
   color: #fff;
   margin: auto;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 #flashcardTable th:last-child,
@@ -480,6 +507,29 @@ input[type="text"] {
   background-color: #626262;
 }
 
+.made-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 200px;
+  height: 70px;
+  font-size: 1.3em;
+  font-family: 'Bebas Neue', Arial, sans-serif;
+  background: linear-gradient(90deg, #7f5fff 0%, #5f5fff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(127,95,255,0.15);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.made-button:hover {
+  background: linear-gradient(90deg, #5f5fff 0%, #7f5fff 100%);
+  transform: scale(1.08);
+}
+
+
+
 /* === CONTAINER === */
 .container {
   max-width: 1200px;
@@ -584,6 +634,7 @@ input[type="text"] {
   pointer-events: all;
 }
 
+
 /* === LOGO TOOLTIP === */
 .logo-container {
   position: relative;
@@ -614,4 +665,42 @@ input[type="text"] {
 
 .logo-tooltip.show {
   opacity: 1;
+}
+
+/* === Pre-made Flashcards === */
+
+.flashcard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  gap: 20px; /* Space between boxes */
+  padding: 20px;
+}
+
+.flashcard-box {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.flashcard-box:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.flashcard-preview {
+  max-height: 150px; /* Limit height */
+  overflow-y: auto; /* Enable scrolling */
+  margin-top: 10px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.flashcard-item {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #333;
 }

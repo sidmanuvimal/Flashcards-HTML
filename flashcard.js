@@ -11,6 +11,81 @@ const isMainPage = !!document.getElementById('flashcardTable');
 // The QA page is identified by the presence of an element with the class 'flashcard-container'.
 const isQAPage = !!document.querySelector('.flashcard-container');
 
+const flashcardData = {
+  Maths: [
+    { question: "What is 2+2?", answer: "4" },
+    { question: "What is 5x3?", answer: "15" },
+    { question: "Solve for x: 2x=10.", answer: "x=5" },
+    { question: "What is the square root of 16?", answer: "4" },
+    { question: "What is 12 divided by 4?", answer: "3" },
+    { question: "What is the area of a rectangle with length 5 and width 3?", answer: "15" },
+    { question: "What is the perimeter of a square with side length 6?", answer: "24" },
+    { question: "What is 7x8?", answer: "56" },
+    { question: "What is the value of π (pi) approximately?", answer: "3.14" },
+    { question: "What is 10% of 200?", answer: "20" }
+  ],
+  English: [
+    { question: "Synonym for 'happy'?", answer: "Joyful" },
+    { question: "Antonym for 'big'?", answer: "Small" },
+    { question: "Define 'metaphor'.", answer: "A figure of speech comparing two things." },
+    { question: "What is the plural of 'child'?", answer: "Children" },
+    { question: "What is the past tense of 'run'?", answer: "Ran" },
+    { question: "What is the opposite of 'beautiful'?", answer: "Ugly" },
+    { question: "What is a noun?", answer: "A word that represents a person, place, or thing." },
+    { question: "What is an adjective?", answer: "A word that describes a noun." },
+    { question: "What is the synonym for 'fast'?", answer: "Quick" },
+    { question: "What is the antonym for 'dark'?", answer: "Bright" }
+  ],
+  Geography: [
+    { question: "Capital of France?", answer: "Paris" },
+    { question: "Largest ocean?", answer: "Pacific Ocean" },
+    { question: "What is a plateau?", answer: "A flat elevated landform." },
+    { question: "What is the longest river in the world?", answer: "Nile River" },
+    { question: "Which continent is Australia in?", answer: "Australia" },
+    { question: "What is the tallest mountain in the world?", answer: "Mount Everest" },
+    { question: "What is the smallest country in the world?", answer: "Vatican City" },
+    { question: "What is the largest desert in the world?", answer: "Sahara Desert" },
+    { question: "What is the capital of Japan?", answer: "Tokyo" },
+    { question: "What is the name of Earth's outermost layer?", answer: "Crust" }
+  ],
+  SocialStudies: [
+    { question: "Who was Gandhi?", answer: "Leader of Indian independence." },
+    { question: "What is democracy?", answer: "Rule by the people." },
+    { question: "Define 'constitution'.", answer: "A set of fundamental principles." },
+    { question: "Who was Martin Luther King Jr.?", answer: "A civil rights leader." },
+    { question: "What is the United Nations?", answer: "An international organization promoting peace." },
+    { question: "What is the Cold War?", answer: "A period of political tension between the USA and USSR." },
+    { question: "What is feudalism?", answer: "A medieval system of land ownership and hierarchy." },
+    { question: "What is the Industrial Revolution?", answer: "A period of rapid industrial growth in the 18th century." },
+    { question: "What is the Magna Carta?", answer: "A document limiting the power of the king." },
+    { question: "What is globalization?", answer: "The process of interconnected economies and cultures." }
+  ],
+  PE: [
+    { question: "Benefits of exercise?", answer: "Improves health and fitness." },
+    { question: "Define 'cardio'.", answer: "Exercise for heart health." },
+    { question: "What is yoga?", answer: "A practice for body and mind." },
+    { question: "What is strength training?", answer: "Exercise to build muscle strength." },
+    { question: "What is flexibility?", answer: "The ability to move joints through a full range of motion." },
+    { question: "What is endurance?", answer: "The ability to sustain physical activity over time." },
+    { question: "What is the recommended daily exercise time?", answer: "30 minutes." },
+    { question: "What is BMI?", answer: "Body Mass Index." },
+    { question: "What is hydration?", answer: "Maintaining adequate water levels in the body." },
+    { question: "What is aerobic exercise?", answer: "Exercise that improves oxygen flow." }
+  ],
+  Science: [
+    { question: "H2O is?", answer: "Water" },
+    { question: "What is gravity?", answer: "Force pulling objects down." },
+    { question: "Define 'atom'.", answer: "Basic unit of matter." },
+    { question: "What is photosynthesis?", answer: "Process by which plants make food using sunlight." },
+    { question: "What is the speed of light?", answer: "Approximately 300,000 km/s." },
+    { question: "What is the boiling point of water?", answer: "100°C or 212°F." },
+    { question: "What is the chemical symbol for gold?", answer: "Au" },
+    { question: "What is the largest planet in the solar system?", answer: "Jupiter" },
+    { question: "What is the powerhouse of the cell?", answer: "Mitochondria" },
+    { question: "What is the formula for force?", answer: "Force = Mass x Acceleration" }
+  ]
+};
+
 const logo = document.querySelector('.logo');
 const slide = document.querySelector('.slide');
 
@@ -38,6 +113,52 @@ slideTriggers.forEach(btn => {
   });
 });
 
+
+const sliderTriggers = document.querySelectorAll('.slider-trigger');
+
+sliderTriggers.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    slide.classList.add('active');
+    setTimeout(() => {
+      window.location.href = "Manage.html"; // Redirect to QA page after fade-out
+    }, 900); // Match your CSS transition duration
+  });
+});
+
+const slidTriggers = document.querySelectorAll('.slid-trigger');
+
+slidTriggers.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    slide.classList.add('active');
+    setTimeout(() => {
+      window.location.href = "Main_page.html"; // Redirect to QA page after fade-out
+    }, 900); // Match your CSS transition duration
+  });
+});
+
+const tooltip = document.querySelector('.logo-tooltip');
+if (tooltip) {
+  tooltip.classList.add('show'); // Make it visible
+
+  // Hide after 4 seconds
+  setTimeout(() => {
+    tooltip.classList.remove('show');
+  }, 4000);
+}
+
+// Replace localStorage with selected flashcards
+document.querySelectorAll('.flashcard-box').forEach(box => {
+  box.addEventListener('click', () => {
+    const subject = box.dataset.subject;
+    // Show confirmation popup
+    const confirmed = confirm(`Are you sure you want to load the "${subject}" flashcards? This will replace your current set.`);
+    if (!confirmed) return;
+    localStorage.setItem('flashcards', JSON.stringify(flashcardData[subject]));
+    alert(`${subject} flashcards have been loaded!`);
+  });
+});
 
 // --- MAIN PAGE LOGIC ---
 if (isMainPage) {
@@ -176,17 +297,6 @@ if (isQAPage) {
 
   // Shuffle flashcards for random order
   shuffleArray(flashcards);
-
-  const tooltip = document.querySelector('.logo-tooltip');
-  if (tooltip) {
-    tooltip.classList.add('show'); // Make it visible
-
-    // Hide after 4 seconds
-    setTimeout(() => {
-      tooltip.classList.remove('show');
-    }, 4000);
-  }
-
   
   
   let currentIndex = 0;
