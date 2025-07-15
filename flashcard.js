@@ -1,7 +1,7 @@
 // Load flashcards from localStorage
 // This retrieves the flashcards data stored in the browser's localStorage.
 // If no data is found, it defaults to an empty array.
-let flashcards = JSON.parse(localStorage.getItem("flashcards")) || [];
+let flashcardQuestions = JSON.parse(localStorage.getItem("flashcard-questions")) || [];
 
 // Check if the current page is the main page
 // The main page is identified by the presence of an element with the ID 'flashcardTable'.
@@ -164,8 +164,6 @@ document.querySelectorAll('.flashcard-box').forEach(box => {
 if (isMainPage) {
   // Welcome text interactivity: Reacts to mouse movement
   const welcomeText = document.querySelector('.welcome-text');
-
-
   document.addEventListener('mousemove', (e) => {
     const { clientX, clientY } = e; // Get mouse position
     const { offsetLeft, offsetTop, offsetWidth, offsetHeight } = welcomeText; // Get text position
@@ -187,7 +185,7 @@ if (isMainPage) {
     const tableBody = document.querySelector("#flashcardTable tbody");
     tableBody.innerHTML = ""; // Clear the table before rendering
 
-    flashcards.forEach((card, index) => {
+    flashcardQuestions.forEach((card, index) => {
       const row = tableBody.insertRow(); // Create a new row
       row.insertCell(0).textContent = index + 1; // Add index number
       row.insertCell(1).textContent = card.question; // Add question
@@ -199,8 +197,8 @@ if (isMainPage) {
       deleteBtn.textContent = "X";
       deleteBtn.className = "delete-btn";
       deleteBtn.onclick = () => {
-        flashcards.splice(index, 1); // Remove the flashcard from the array
-        localStorage.setItem("flashcards", JSON.stringify(flashcards)); // Update localStorage
+        flashcardQuestions.splice(index, 1); // Remove the flashcard from the array
+        localStorage.setItem("flashcard-questions", JSON.stringify(flashcardQuestions)); // Update localStorage
         renderTable(); // Re-render the table
       };
       deleteCell.appendChild(deleteBtn);
@@ -232,12 +230,12 @@ if (isMainPage) {
     if (question.length > 600 || answer.length > 600) {
       alert("Question and answer must be less than 600 characters each.");
       return;
-    }
+    } 
 
     // Add flashcard if both question and answer are provided
     if (question && answer) {
-      flashcards.push({ question, answer }); // Add to array
-      localStorage.setItem("flashcards", JSON.stringify(flashcards)); // Update localStorage
+      flashcardQuestions.push({ question, answer }); // Add to array
+      localStorage.setItem("flashcard-questions", JSON.stringify(flashcardQuestions)); // Update localStorage
       renderTable(); // Re-render the table
 
       // Clear inputs and refocus
@@ -296,7 +294,7 @@ if (isQAPage) {
   wrongBtn.classList.add('hidden');
 
   // Shuffle flashcards for random order
-  shuffleArray(flashcards);
+  shuffleArray(flashcardQuestions);
   
   
   let currentIndex = 0;
@@ -323,7 +321,7 @@ if (isQAPage) {
 
   // Show the current flashcard
   function showFlashcard(index) {
-    if (flashcards.length === 0) {
+    if (flashcardQuestions.length === 0) {
       questionElem.textContent = "No flashcards found!";
       answerElem.textContent = "";
       flashcard.classList.remove('flipped');
@@ -331,16 +329,49 @@ if (isQAPage) {
       wrongBtn.classList.add('hidden');
       return;
     }
-    questionElem.textContent = flashcards[index].question;
-    answerElem.textContent = flashcards[index].answer;
+    questionElem.textContent = flashcardQuestions[index].question;
+    answerElem.textContent = flashcardQuestions[index].answer;
     flashcard.classList.remove('flipped');
     correctBtn.classList.add('hidden');
     wrongBtn.classList.add('hidden');
   }
 
-  // Flip card on click
+
+  // Next button logic
+  nextBtn.addEventListener('click', () => {
+    if (flashcardQuestions.length === 0) return;
+
+    flashcard.classList.remove('flipped');
+    frontElem.classList.add('fade');
+
+    setTimeout(() => {
+      currentIndex = (currentIndex + 1) % flashcardQuestions.length;
+      showFlashcard(currentIndex);
+      frontElem.classList.remove('fade');
+    }, 200);
+  });
+
+  flipBtn.addEventListener('click', () => {
+    if (flashcardQuestions.length === 0) return;
+
+    flashcard.classList.toggle('flipped');
+
+    // Show and enable buttons when card is flipped
+    if (flashcard.classList.contains('flipped')) {
+      correctBtn.classList.remove('hidden');
+      wrongBtn.classList.remove('hidden');
+      correctBtn.disabled = false;
+      wrongBtn.disabled = false;
+    } else {
+      correctBtn.classList.add('hidden');
+      wrongBtn.classList.add('hidden');
+      correctBtn.disabled = true;
+      wrongBtn.disabled = true;
+    }
+  });
+    // Flip card on click
   flashcard.addEventListener('click', () => {
-    if (flashcards.length > 0) {
+    if (flashcardQuestions.length > 0) {
       flashcard.classList.toggle('flipped');
 
       // Show and enable buttons when card is flipped
@@ -358,38 +389,7 @@ if (isQAPage) {
     }
   });
 
-  // Next button logic
-  nextBtn.addEventListener('click', () => {
-    if (flashcards.length === 0) return;
 
-    flashcard.classList.remove('flipped');
-    frontElem.classList.add('fade');
-
-    setTimeout(() => {
-      currentIndex = (currentIndex + 1) % flashcards.length;
-      showFlashcard(currentIndex);
-      frontElem.classList.remove('fade');
-    }, 200);
-  });
-
-  flipBtn.addEventListener('click', () => {
-    if (flashcards.length === 0) return;
-
-    flashcard.classList.toggle('flipped');
-
-    // Show and enable buttons when card is flipped
-    if (flashcard.classList.contains('flipped')) {
-      correctBtn.classList.remove('hidden');
-      wrongBtn.classList.remove('hidden');
-      correctBtn.disabled = false;
-      wrongBtn.disabled = false;
-    } else {
-      correctBtn.classList.add('hidden');
-      wrongBtn.classList.add('hidden');
-      correctBtn.disabled = true;
-      wrongBtn.disabled = true;
-    }
-  });
 
   // Helper function for next card animation
   function animateToNextCard() {
@@ -397,7 +397,7 @@ if (isQAPage) {
     frontElem.classList.add('fade');
 
     setTimeout(() => {
-      currentIndex = (currentIndex + 1) % flashcards.length;
+      currentIndex = (currentIndex + 1) % flashcardQuestions.length;
       showFlashcard(currentIndex);
       frontElem.classList.remove('fade');
     }, 200);
@@ -424,7 +424,7 @@ if (isQAPage) {
     correctCount++;
     updateProgressBar();
 
-    if (flashcards.length === 0) return;
+    if (flashcardQuestions.length === 0) return;
 
     animateToNextCard();
 
@@ -439,7 +439,7 @@ if (isQAPage) {
     wrongCount++;
     updateProgressBar();
 
-    if (flashcards.length === 0) return;
+    if (flashcardQuestions.length === 0) return;
 
     animateToNextCard();
 
